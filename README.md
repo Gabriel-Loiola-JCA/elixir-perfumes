@@ -19,6 +19,10 @@ Uma rede social minimalista sobre perfumes: feed, stories, perfis, catálogo de 
 
 Os dados ficam no navegador (`localStorage`). Não há servidor nem sincronização entre aparelhos.
 
+## Apresentação
+
+`elixir-apresentacao.html`: apresentação em movimento, 14 cenas que tocam sozinhas (cerca de 3 min 40 s). Setas avançam e voltam, espaço pausa, F abre em tela cheia. Os números e imagens vêm do catálogo real do app.
+
 ## Estrutura
 
 ```
