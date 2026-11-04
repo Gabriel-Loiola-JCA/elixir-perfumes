@@ -1,7 +1,55 @@
-# ELIXIR — simulador de afinidades olfativas
+# ELIXIR
 
-Perfil público simulado de Vincenzo, comunidade fictícia, 101 perfumes com imagens de referência, famílias olfativas, acordes imaginativos e radar de afinidades. Publicações e preferências são armazenadas somente no navegador; não há backend ou sincronização entre aparelhos.
+Uma rede social minimalista sobre perfumes: feed, stories, perfis, catálogo de 101 fragrâncias, notas olfativas e uma assinatura pessoal calculada a partir do seu gosto.
 
-Abra `index.html` ou use GitHub Pages. Apresentação: `elixir-apresentacao.html`.
+**Site:** https://gabriel-loiola-jca.github.io/elixir-perfumes/
 
-Fontes de imagens: `assets/products/catalog-images.json` e `assets/research/social-product-sources.json`. Retratos e famílias ilustrativas gerados com IA; prompts nos manifests correspondentes. Perfis, métricas, selo de verificação e gostos são demonstrações. Fotos dos produtos e marcas permanecem de seus respectivos titulares. Base Scento adaptada sob CC BY 4.0, com atribuição nas páginas e em `assets/catalog-source/LICENSE`.
+## O que tem
+
+- **Feed** em coluna única com stories, duplo toque para curtir, comentários, salvos e compartilhamento.
+- **Stories** em tela cheia com barra de progresso, toque para avançar, segurar para pausar e arrastar para fechar.
+- **Busca rápida** (tecla `/` ou `Ctrl+K`) por perfumes, pessoas e notas, com recentes.
+- **Atividade** com notificações do que acontece no seu perfil.
+- **Explorar** com busca instantânea, filtros e rolagem contínua.
+- **Perfume**: afinidade, notas, acordes, desempenho, quem também usa e parecidos.
+- **Perfil** com publicações, favoritos, assinatura olfativa (radar) e avaliações.
+- **Descoberta guiada** em cinco passos para montar a assinatura.
+- **Tema claro e escuro** que segue o sistema, com troca animada.
+- Transições entre telas (View Transitions), revelação ao rolar, imagens com carregamento suave. Tudo respeita *reduzir movimento*.
+
+Os dados ficam no navegador (`localStorage`). Não há servidor nem sincronização entre aparelhos.
+
+## Estrutura
+
+```
+index.html, elixir.html, assinatura.html   Entradas (ELIXIR e a variante ASSINATURA)
+assets/css/app.css                          Folha de estilo única, com tokens de tema
+assets/js/
+  data/      Catálogo, notas, comunidade demonstrativa (sem lógica de tela)
+  engine/    Motor de afinidade e identidade olfativa
+  core/      dom (utilitários), store (estado + migração), router, motion (tema, animações, modal), components
+  views/     Uma tela por arquivo: feed, stories, profile, explore, perfume, notes, collection, discovery, search, activity, compose, shell
+  actions.js Todas as interações: data-action="nome" chama Actions.nome
+  main.js    Ponto de entrada
+tests/       Verificações do motor e da descoberta
+```
+
+Fluxo: uma ação altera o estado com `Store.update()`, que salva e avisa o `App.render()`. As telas são funções puras que devolvem HTML. Curtir, salvar e favoritar atualizam só os botões afetados, sem redesenhar a página.
+
+## Rodar
+
+Abra `index.html` no navegador, ou sirva a pasta:
+
+```bash
+python -m http.server 5178
+```
+
+Testes:
+
+```bash
+npm test
+```
+
+## Créditos
+
+Perfis, métricas, selo de verificação e gostos são demonstrações. Retratos da comunidade e ilustrações de famílias foram gerados com IA; prompts nos manifests. Fotos de produtos e marcas pertencem aos seus titulares (fontes em `assets/products/catalog-images.json` e `assets/research/social-product-sources.json`). Base Scento adaptada sob CC BY 4.0, com atribuição nas páginas e em `assets/catalog-source/LICENSE`. Fontes DM Sans e Italiana sob OFL (`assets/LICENSE-*.txt`).
