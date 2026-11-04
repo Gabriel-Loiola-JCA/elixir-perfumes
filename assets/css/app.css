@@ -7,7 +7,7 @@
   --accent:#5c7a59; --accent-soft:#eef3ec; --like:#e5484d;
   --overlay:rgba(10,10,10,.42); --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 28px rgba(0,0,0,.06);
   --radius:14px; --radius-sm:10px; --side:244px; --rail:320px; --gutter:24px;
-  --sans:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif; --serif:'Italiana',Georgia,serif;
+  --sans:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif; --serif:var(--sans);
   --ease:cubic-bezier(.22,1,.36,1);
   color-scheme:light;
 }
@@ -54,7 +54,7 @@ button:disabled{opacity:.4;cursor:default}
 .footnote a{text-decoration:underline;text-underline-offset:2px}
 .row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .row.between{justify-content:space-between}
-.wordmark{font-family:var(--serif);font-size:26px;letter-spacing:.14em;line-height:1}
+.wordmark{font-family:var(--sans);font-size:21px;font-weight:700;letter-spacing:.22em;line-height:1}
 
 /* Controles */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:38px;padding:0 18px;border-radius:999px;background:var(--text);color:var(--bg);font-size:14px;font-weight:600;transition:opacity .2s,transform .2s var(--ease),background-color .2s}
@@ -143,7 +143,7 @@ details.card.more{margin-top:16px}
 .app[data-layout=wide]{grid-template-columns:var(--side) minmax(0,1fr)}
 .sidebar{position:sticky;top:0;height:100dvh;display:flex;flex-direction:column;padding:28px 12px 20px;border-right:1px solid var(--line)}
 .sidebar .wordmark{padding:0 12px;margin-bottom:32px}
-.monogram{display:none;font-family:var(--serif);font-size:30px;text-align:center;margin-bottom:28px}
+.monogram{display:none;font-family:var(--sans);font-size:26px;font-weight:700;text-align:center;margin-bottom:28px}
 .side-nav,.side-foot{display:grid;gap:2px}
 .side-foot{margin-top:auto}
 .side-nav button,.side-foot button{display:flex;align-items:center;gap:14px;height:48px;padding:0 12px;border-radius:12px;font-size:15px;color:var(--text);transition:background-color .2s}
